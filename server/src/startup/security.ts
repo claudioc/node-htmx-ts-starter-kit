@@ -12,7 +12,7 @@ export default (app: Express, express: any) =>
             'script-src': ["'self'", 'unpkg.com'],
           },
         },
-      })
+      }),
     )
     .use(cors())
     .use(express.json());
