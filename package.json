@@ -1,8 +1,11 @@
 {
   "scripts": {
-    "dev": "concurrently -k \"tsc -p ./server -w\" \"tsc -p ./client -w\" \"nodemon ./dist/server/app.js\"",
+    "dev:client": "tsc --preserveWatchOutput -p ./client -w",
+    "dev:server": "tsc --preserveWatchOutput -p ./server -w",
+    "dev:server:run": "nodemon -w ./dist/server ./dist/server/app.js",
+    "dev": "concurrently -r -k \"npm:dev:*\"",
     "clean": "rm -rf ./dist",
-    "build": "npm run build:server && npm run build:client",
+    "build": "npm run clean && npm run build:server && npm run build:client",
     "build:client": "tsc -p ./client",
     "build:server": "tsc -p ./server && ./scripts/copy-server-views.sh",
     "postinstall": "npm run build",
@@ -11,10 +14,7 @@
     "start": "NODE_ENV=production node ./dist/server/app.js"
   },
   "nodemonConfig": {
-    "watch": [
-      "./dist/server"
-    ],
-    "delay": 1000
+    "delay": 1500
   },
   "eslintConfig": {
     "extends": [
@@ -34,17 +34,20 @@
       "import"
     ],
     "rules": {
-      "no-unused-vars": [
-        "warn"
-      ],
-      "comma-dangle": [
-        "off"
+      "@typescript-eslint/comma-dangle": [
+        "warn",
+        {
+          "arrays": "always-multiline",
+          "objects": "always-multiline",
+          "functions": "never"
+        }
       ]
     }
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
+    "@types/morgan": "^1.9.9",
     "@types/node": "^20.10.2",
     "@typescript-eslint/eslint-plugin": "^6.13.1",
     "@typescript-eslint/parser": "^6.13.1",
@@ -56,10 +59,11 @@
     "typescript": "^5.3.2"
   },
   "dependencies": {
-    "express": "^4.18.2",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
-    "helmet": "^7.1.0"
+    "express": "^4.18.2",
+    "helmet": "^7.1.0",
+    "morgan": "^1.10.0"
   }
 }

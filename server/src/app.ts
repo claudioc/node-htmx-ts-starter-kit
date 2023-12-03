@@ -1,17 +1,6 @@
-import express from 'express';
-import middlewaresSetup from './startup/middlewares';
-import viewsSetup from './startup/views';
-import routerSetup from './startup/router';
-import securitySetup from './startup/security';
-import dotenv from 'dotenv';
+import bootstrap from './lib/bootstrap';
 
-dotenv.config();
-const app = express();
-
-middlewaresSetup(app, express);
-securitySetup(app, express);
-routerSetup(app);
-viewsSetup(app);
+const app = bootstrap();
 
 const APP_PORT = process.env.PORT || 3000;
 

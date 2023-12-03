@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- <link rel="stylesheet" href="https://unpkg.com/chota@latest" /> -->
     <link rel="stylesheet" href="/a/css/style.css" />
   </head>
   <body class="container">
-    <header></header>
-
     <main class="row">
       <div class="col">
-        <h1 class="">NYSE opening times</h1>
+        <h1>A nifty starter kit</h1>
+        <p><%- include('partials/currentTime') %></p>
+        <p>
+          <button
+            class="button primary"
+            hx-get="/api/current-time"
+            hx-target="previous p"
+          >
+            Update server time
+          </button>
+        </p>
       </div>
     </main>
 
-    <footer></footer>
     <script src="https://unpkg.com/htmx.org@1.9.9"></script>
     <script src="/a/js/app.js"></script>
   </body>
