@@ -1,19 +1,25 @@
 {
   "scripts": {
-    "dev": "nodemon --config ./server/nodemon.json",
-    "build": "npm run build:client && npm run build:server",
+    "dev" : "concurrently -k \"tsc -p ./server -w\" \"tsc -p ./client -w\" \"nodemon ./dist/server/app.js\"",
+    "clean": "rm -rf ./dist",
+    "build": "npm run build:server && npm run build:client",
     "build:client": "tsc -p ./client",
-    "build:server": "tsc -p ./server",
+    "build:server": "tsc -p ./server && ./scripts/copy-server-views.sh",
     "postinstall": "npm run build",
     "lint": "eslint . --ext .ts",
     "prestart": "npm run build",
-    "start": "ts-node ./dist/server/app.js"
+    "start": "NODE_ENV=production node ./dist/server/app.js"
+  },
+  "nodemonConfig": {
+    "watch": ["./dist/server"],
+    "delay": 1000
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/helmet": "^4.0.0",
     "@types/node": "^20.10.2",
+    "concurrently": "^8.2.2",
     "eslint": "^8.55.0",
     "express": "^4.18.2",
     "nodemon": "^3.0.2",

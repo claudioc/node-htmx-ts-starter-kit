@@ -9,7 +9,7 @@ export default (app: Express, express: any) =>
         // crossOriginEmbedderPolicy: false,
         contentSecurityPolicy: {
           directives: {
-            'script-src': ['self', 'unpkg.com', 'cdn.tailwindcss.com'],
+            'script-src': ["'self'", 'unpkg.com'],
           },
         },
       })
