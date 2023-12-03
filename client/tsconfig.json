@@ -10,10 +10,15 @@
     "target": "es6",
 
     /* Modules */
-    "module": "commonjs",
+    /* You still need to use the '.js' extension in your import statements */
+    "module": "es6",
+    "lib": ["dom", "es6"],
 
     /* Emit */
+    // "sourceMap": true,
+    // "mapRoot": "/a/js",
     "inlineSourceMap": true,
+    "inlineSources": true,
     "outDir": "../dist/client",
     "removeComments": true,
 

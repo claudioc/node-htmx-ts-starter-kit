@@ -28,7 +28,7 @@ app
       // crossOriginEmbedderPolicy: false,
       contentSecurityPolicy: {
         directives: {
-          'script-src': ["'self'", 'unpkg.com'],
+          'script-src': ["'self'", "'unsafe-inline'", 'unpkg.com'],
         },
       },
     })

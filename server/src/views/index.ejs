@@ -7,9 +7,11 @@
     <main class="row">
       <div class="col">
         <h1>A nifty starter kit</h1>
+        <p><strong>Browser time:</strong> <span id="currentTime">…</span></p>
         <p><%- include('partials/currentTime') %></p>
         <p>
           <button
+            id="updateTimeBtn"
             class="button primary"
             hx-get="/api/current-time"
             hx-target="previous p"
@@ -21,6 +23,6 @@
     </main>
 
     <script src="https://unpkg.com/htmx.org@1.9.9"></script>
-    <script src="/a/js/app.js"></script>
+    <script type="module" src="/a/js/app.js"></script>
   </body>
 </html>
