@@ -1,9 +1,9 @@
 {
   "scripts": {
-    "dev": "nodemon",
+    "dev": "nodemon --config ./server/nodemon.json",
     "build": "npm run build:client && npm run build:server",
-    "build:client": "tsc -p ./client/src",
-    "build:server": "tsc -p ./server/src",
+    "build:client": "tsc -p ./client",
+    "build:server": "tsc -p ./server",
     "postinstall": "npm run build",
     "lint": "eslint . --ext .ts",
     "prestart": "npm run build",
