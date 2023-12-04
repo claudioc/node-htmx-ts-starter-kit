@@ -13,19 +13,16 @@ const app = express();
 // Since we are not using ts-node, and we are running from the dist folder,
 // the views folder is not available in the dist folder when developing.
 const viewsPath =
-  process.env.NODE_ENV === 'production'
-    ? '../views'
-    : '../../../server/src/views';
+  process.env.NODE_ENV === 'production' ? '../views' : '../../../server/views';
 
 app
   // HTTP request logger middleware for node.js
   .use(morgan(process.env.NODE_ENV === 'production' ? 'common' : 'dev'))
-  // Serve static content for the app from the “public” directory in the application directory
+  // Serve static content for the app from the "assets" directory
   .use('/a', express.static(path.join(__dirname, '../../../assets')))
   .use(
     helmet({
-      // If you get stuck in CSP, try this:
-      // crossOriginEmbedderPolicy: false,
+      // If you get stuck in CSP, try this: crossOriginEmbedderPolicy: false,
       contentSecurityPolicy: {
         directives: {
           'script-src': ["'self'", "'unsafe-inline'", 'unpkg.com'],
