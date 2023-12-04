@@ -1,4 +1,4 @@
-import something from './tools.js';
+import { nowToISOString } from './tools.js';
 
 const button = document.getElementById('updateTimeBtn');
 const currentTime = document.getElementById('currentTime');
@@ -10,8 +10,7 @@ if (button) {
 }
 
 function updateCurrentTime() {
-  console.log(something());
   if (currentTime) {
-    currentTime.innerHTML = new Date().toISOString();
+    currentTime.innerHTML = nowToISOString();
   }
 }
