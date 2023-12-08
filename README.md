@@ -10,7 +10,7 @@ The kit contains:
 - The kit itself does something, as a demo micro application - it reads the current server time and displays it in the browser
 
 ## Tech stack
-- Expressjs
+- Good ol' [Expressjs](https://expressjs.com/)
 - [EJS](https://ejs.co/) templates
 - TypeScript
 - [HTMX](https://htmx.org/) for the frontend to speak to the backend
