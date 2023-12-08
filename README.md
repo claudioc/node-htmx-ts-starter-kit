@@ -11,12 +11,12 @@ The kit contains:
 
 ## Tech stack
 - Expressjs
-- EJS templates
+- [EJS](https://ejs.co/) templates
 - TypeScript
-- HTMX for the frontend to speak to the backend
-- Chota framework for the CSS, because it's small and cute
+- [HTMX](https://htmx.org/) for the frontend to speak to the backend
+- [Chota](https://jenil.github.io/chota/) framework for the CSS, because it's small and cute
 
-I am not using `ts-node` because it's not needed for a small project.
+I am not even using `ts-node` because it's not needed for a small project.
 
 ### Express middlewares:
 - Helmet for security
@@ -28,7 +28,7 @@ I am not using `ts-node` because it's not needed for a small project.
 - nodemon
 - dotenv
 - eslint
-- prettier and a barebone config
+- prettier and a bare-bone config
 
 ### Bonus
 - There is an example of how to write a HTMX extension
