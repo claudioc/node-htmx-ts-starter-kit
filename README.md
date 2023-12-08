@@ -1,12 +1,55 @@
+# Express + Typescript + HTMX starter kit
 
-- Create a simple `htmx` extension
+Motivation: I am sick of React and frontend building issues. I just want to build staff.
 
-- Express' body-parser is not installed ([see the doc](https://expressjs.com/en/resources/middleware/body-parser.html))
-- no cookie support
-- no test support
+The goal of this starter kit is to provide a slightly opinionated but super simple way to get started with a project that has some logic on the backend and some logic on the frontend. A typical use case could be a single page that fetches some information from a third-party API, but you also want to have a small backend where to keep your API keys and maybe a cache to avoid hitting a rate limit on those external API.
 
-Caveats
-- Uses .js importing in TS
+The kit contains:
+- A server (expressjs with some middlewares)
+- A client (just TypeScript, no frameworks, which you can extend with your logic)
+- The kit itself does something, as a demo micro application - it reads the current server time and displays it in the browser
 
-TODO
-better sourcemap
+## Tech stack
+- Expressjs
+- EJS templates
+- TypeScript
+- HTMX for the frontend to speak to the backend
+- Chota framework for the CSS, because it's small and cute
+
+I am not using `ts-node` because it's not needed for a small project.
+
+### Express middlewares:
+- Helmet for security
+- CORS just in case
+- morgan for the logs
+
+### Additional tools provided:
+- concurrently
+- nodemon
+- dotenv
+- eslint
+- prettier and a barebone config
+
+### Bonus
+- There is an example of how to write a HTMX extension
+- Configurations are all in the package.json
+
+## Try it
+
+- npm i
+- npm start
+
+You also have `npm lint` and `npm build`.
+
+## Deployment
+
+This is on you. I own a small VPS and I run all my projects from there.
+
+If you have successfully deployed a project inherited from this kit, in some cloud, and you want to share the steps please open a PR!
+
+## What is missing
+- Express' body-parser is not installed ([see the doc](https://expressjs.com/en/resources/middleware/body-parser.html)) because I didn't have to POST anything
+- no cookie support, because we hate cookie banners
+- no test support, because YMMV
+- Uses .js importing in the client TS
+
