@@ -1,6 +1,6 @@
 # Express + Typescript + HTMX starter kit
 
-Motivation: I am sick of React and frontend building issues. I just want to build staff.
+Motivation: **I am sick of React and frontend building issues. I just want to build staff**.
 
 The goal of this starter kit is to provide a slightly opinionated but super simple way to get started with a project that has some logic on the backend and some logic on the frontend. A typical use case could be a single page that fetches some information from a third-party API, but you also want to have a small backend where to keep your API keys and maybe a cache to avoid hitting a rate limit on those external API.
 
@@ -35,6 +35,8 @@ I am not even using `ts-node` because it's not needed for a small project.
 - Configurations are all in the package.json
 
 ## Try it
+
+Note that it doesn't work on Windows out-of-the-box (makes use of symlinks and bash)
 
 - npm i
 - npm start
