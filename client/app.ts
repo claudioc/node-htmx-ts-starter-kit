@@ -1,16 +1,16 @@
-import { nowToISOString } from './lib/tools.js';
+import { nowToISOString, updateElementContent } from './lib/tools.js';
 
-const button = document.getElementById('updateTimeBtn');
-const currentTime = document.getElementById('currentTime');
+const htmx = (window as any).htmx;
 
-function updateCurrentTime() {
-  if (currentTime) {
-    currentTime.innerHTML = nowToISOString();
-  }
-}
-
-updateCurrentTime();
-
-if (button) {
-  button.addEventListener('click', updateCurrentTime);
+if (htmx !== undefined) {
+  htmx.defineExtension('current-time', {
+    onEvent: (name: string, evt: Event) => {
+      const el = evt.target as HTMLElement;
+      if (name === 'htmx:afterSwap' || name === 'htmx:afterProcessNode') {
+        if (el && el.dataset) {
+          updateElementContent(el.dataset.target!, nowToISOString());
+        }
+      }
+    },
+  });
 }

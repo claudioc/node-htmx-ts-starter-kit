@@ -7,13 +7,18 @@
     <main class="row">
       <div class="col">
         <h1>A nifty starter kit</h1>
-        <p><strong>Browser time:</strong> <span id="currentTime">…</span></p>
-        <p><%- include('partials/currentTime') %></p>
+        <p>
+          <strong>Browser time:</strong>
+          <span id="currentTime">…</span>
+        </p>
+        <p hx-ext="current-time" data-target="#currentTime">
+          <%- include('partials/serverTime') %>
+        </p>
         <p>
           <button
             id="updateTimeBtn"
             class="button primary"
-            hx-get="/api/current-time"
+            hx-get="/api/server-time"
             hx-target="previous p"
           >
             Update server time
@@ -22,7 +27,7 @@
       </div>
     </main>
 
-    <script src="https://unpkg.com/htmx.org@1.9.9"></script>
+    <script src="/a/vendor/htmx.min.js"></script>
     <script type="module" src="/a/js/app.js"></script>
   </body>
 </html>

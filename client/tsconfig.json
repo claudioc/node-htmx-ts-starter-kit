@@ -15,10 +15,6 @@
     "lib": ["dom", "es6"],
 
     /* Emit */
-    // "sourceMap": true,
-    // "mapRoot": "/a/js",
-    "inlineSourceMap": true,
-    "inlineSources": true,
     "outDir": "../dist/client",
     "removeComments": true,
 

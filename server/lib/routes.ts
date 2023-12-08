@@ -9,8 +9,8 @@ export default (app: Express) =>
       });
     })
 
-    .get('/api/current-time', async (req: Request, res: Response) => {
-      res.render('partials/currentTime', {
+    .get('/api/server-time', async (req: Request, res: Response) => {
+      res.render('partials/serverTime', {
         currentTime: new Date().toISOString(),
       });
     });
