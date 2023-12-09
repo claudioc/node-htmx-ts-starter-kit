@@ -1,16 +1,14 @@
 {
   "scripts": {
-    "dev:client": "tsc --preserveWatchOutput -p ./client -w",
-    "dev:server": "tsc --preserveWatchOutput -p ./server -w",
-    "dev:server:run": "nodemon -w ./dist/server ./dist/server/app.js",
-    "dev": "concurrently -r -k \"npm:dev:*\"",
+    "dev:build": "npm run clean && tsc -b ./client ./server",
+    "dev:watch": "tsc -b ./client ./server --preserveWatchOutput -w",
+    "dev:start": "nodemon -w ./dist/server ./dist/server/app.js",
+    "dev": "npm run dev:build && conc -k 'npm:dev:start' 'npm:dev:watch'",
     "clean": "rm -rf ./dist",
-    "build": "npm run clean && npm run build:server && npm run build:client",
-    "build:client": "tsc -p ./client",
-    "build:server": "tsc -p ./server && ./scripts/copy-server-views.sh",
+    "build": "npm run lint && npm run dev:build && ./scripts/copy-views.sh",
     "postinstall": "npm run build",
     "lint": "eslint . --ext .ts",
-    "prestart": "npm run build",
+    "prestart": "NODE_ENV=production npm run build",
     "start": "NODE_ENV=production node ./dist/server/app.js"
   },
   "nodemonConfig": {
