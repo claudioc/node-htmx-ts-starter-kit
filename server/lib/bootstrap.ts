@@ -5,6 +5,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 import setupRoutes from './routes';
 import dotenv from 'dotenv';
+import { ASSETS_FOLDER } from './constants.js';
 
 dotenv.config();
 
@@ -20,7 +21,10 @@ app
   .use(morgan(process.env.NODE_ENV === 'production' ? 'common' : 'dev'))
   // Serve static content for the app from the "assets" directory
   // Note that the asset folder contains symlinks to the client/dist folder
-  .use('/a', express.static(path.join(__dirname, '../../../assets')))
+  .use(
+    `/${ASSETS_FOLDER}`,
+    express.static(path.join(__dirname, '../../../assets'))
+  )
   .use(
     helmet({
       // If you get stuck in CSP, try this: crossOriginEmbedderPolicy: false,

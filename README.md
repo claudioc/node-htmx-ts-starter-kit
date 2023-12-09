@@ -21,13 +21,13 @@ I am not even using `ts-node` because it's not needed for a small project.
 ### Express middlewares:
 - Helmet for security
 - CORS just in case
-- morgan for the logs
+- Morgan for the logs
 
 ### Additional tools provided:
 - concurrently
 - nodemon
 - dotenv
-- eslint
+- eslint (extends airbnb)
 - prettier and a bare-bone config
 
 ### Bonus
@@ -41,7 +41,7 @@ Note that it doesn't work on Windows out-of-the-box (makes use of symlinks and b
 - npm i
 - npm run dev
 
-You also have `npm lint` and `npm build`.
+You also have `npm lint`, `npm build` and of course `npm start` (for production).
 
 ## Use it
 
@@ -52,7 +52,7 @@ Some options:
 
 ## Deployment
 
-This is on you. I own a small VPS and I run all my projects from there.
+This is on you. I own a small VPS and I run all my projects from there. Ideally, you want to run this process behind a reverse proxy where you also end your TLS connection. I use ngnix and letsencrypt for my tls certificates.
 
 If you have successfully deployed a project inherited from this kit, in some cloud, and you want to share the steps please open a PR!
 
@@ -61,4 +61,4 @@ If you have successfully deployed a project inherited from this kit, in some clo
 - no cookie support, because we hate cookie banners
 - no test support, because YMMV
 - Uses .js importing in the client TS
-
+- Assets are not tgz compressed because this should be the job of your reverse proxy
