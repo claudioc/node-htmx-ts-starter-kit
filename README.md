@@ -36,10 +36,10 @@ I am not even using `ts-node` because it's not needed for a small project.
 
 ## Try it
 
-Note that it doesn't work on Windows out-of-the-box (makes use of symlinks and bash)
+Note that it doesn't work on Windows out-of-the-box (makes use of symlinks and bash).
 
 - npm i
-- npm start
+- npm run dev
 
 You also have `npm lint` and `npm build`.
 
