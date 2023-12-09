@@ -1,4 +1,17 @@
 {
+  "name": "node-htmx-ts-starter-kit",
+  "version": "1.0.1",
+  "description": "Opinionated, no nonsense starter kit for a simple Express API application",
+  "main": "./dist/app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/claudioc/node-htmx-ts-starter-kit.git"
+  },
+  "author": "Claudio Cicali <claudio.cicali@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/claudioc/node-htmx-ts-starter-kit/issues"
+  },
   "scripts": {
     "dev:build": "npm run clean && tsc -b ./client ./server",
     "dev:watch": "tsc -b ./client ./server --preserveWatchOutput -w",

@@ -43,6 +43,13 @@ Note that it doesn't work on Windows out-of-the-box (makes use of symlinks and b
 
 You also have `npm lint` and `npm build`.
 
+## Use it
+
+Some options:
+
+- Download the latest archive from [Github releases](https://github.com/claudioc/node-htmx-ts-starter-kit/releases) or from the "Code" button in the repository main page
+- Clone the repo, and then `rm -rf` its `.git` directory (github doesn't support `git archive` and git doesn't have a `export` command like svn does)
+
 ## Deployment
 
 This is on you. I own a small VPS and I run all my projects from there.
