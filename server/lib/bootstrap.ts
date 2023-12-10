@@ -17,6 +17,8 @@ const viewsPath =
   process.env.NODE_ENV === 'production' ? '../views' : '../../../server/views';
 
 app
+  .set('views', path.join(__dirname, viewsPath))
+  .set('view engine', 'ejs')
   // HTTP request logger middleware for node.js
   .use(morgan(process.env.NODE_ENV === 'production' ? 'common' : 'dev'))
   // Serve static content for the app from the "assets" directory
@@ -36,10 +38,10 @@ app
     })
   )
   .use(cors())
-  .use(express.json())
-  .set('views', path.join(__dirname, viewsPath))
-  .set('view engine', 'ejs');
+  .use(express.json());
 
-setupRoutes(app);
+setupRoutes(app).all('*', (req, res) => {
+  res.status(404).send('Not Found');
+});
 
 export default () => app;
