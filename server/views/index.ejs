@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="utf-8" />
     <link rel="stylesheet" href="<%- cssFile %>" />
   </head>
   <body class="container">
@@ -14,16 +15,11 @@
         <p hx-ext="current-time" data-target="#currentTime">
           <%- include('partials/serverTime') %>
         </p>
-        <p>
-          <button
-            id="updateTimeBtn"
-            class="button primary"
-            hx-get="/api/server-time"
-            hx-target="previous p"
-          >
+        <form hx-get="/api/server-time" hx-target="previous p">
+          <button class="button primary" type="submit">
             Update server time
           </button>
-        </p>
+        </form>
       </div>
     </main>
 
