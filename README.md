@@ -27,7 +27,7 @@ I am not even using `ts-node` because it's not needed for a small project.
 - concurrently
 - nodemon
 - dotenv
-- eslint (extends airbnb)
+- eslint with ts support (extends just the recommended rule set)
 - prettier and a bare-bone config
 
 ### Bonus
@@ -49,6 +49,10 @@ Some options:
 
 - Download the latest archive from [Github releases](https://github.com/claudioc/node-htmx-ts-starter-kit/releases) or from the "Code" button in the repository main page
 - Clone the repo, and then `rm -rf` its `.git` directory (github doesn't support `git archive` and git doesn't have a `export` command like svn does)
+
+This project uses ESLint and Prettier: don't forget to install/enable their extension in Visual Studio Code.
+
+To not mess things up, we are not using "eslint-prettier" or similar, but you can try it if you want.
 
 ## Deployment
 
