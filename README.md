@@ -1,4 +1,4 @@
-# Express + Typescript + HTMX starter kit
+# Express + TypeScript + HTMX starter kit
 
 Motivation: **I am sick of React and frontend building issues. I just want to build staff**.
 
@@ -63,6 +63,13 @@ If you have successfully deployed a project inherited from this kit, in some clo
 ## What is missing
 - Express' body-parser is not installed ([see the doc](https://expressjs.com/en/resources/middleware/body-parser.html)) because I didn't have to POST anything
 - no cookie support, because we hate cookie banners
-- no test support, because YMMV
 - Uses .js importing in the client TS
 - Assets are not tgz compressed because this should be the job of your reverse proxy
+
+A testing system is also not installed by default, but if you are like me and love [Vitest](https://vitest.dev/), just follow these instructions (for the client, but it should work for the server as well):
+
+- `npm install vitest --save-dev`
+- Edit `client/tsconfig.json` and add an `exclude` option for your tests: this is because vitest doesn't use `tsc` for the typescript sources and you should tell `tsc` to not compile and build the tests
+- Add a `test` script in your package.json with something like `vitest ./client/**/*.spec.ts`
+- Since we are excluding tests from the TS projects, eslint won't be able to find them anymore and we need to put them back somewhere. To do so, you can [follow these instructions](https://typescript-eslint.io/linting/troubleshooting/#i-get-errors-telling-me-eslint-was-configured-to-run--however-that-tsconfig-does-not--none-of-those-tsconfigs-include-this-file). I would add a `tsconfig.eslint.json` which extends our base, doesn't emit and includes the test files
+- Write your tests away!
