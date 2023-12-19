@@ -3,8 +3,9 @@ import path from 'path';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import cors from 'cors';
-import setupRoutes from './routes';
+import router from './router';
 import dotenv from 'dotenv';
+import { handleClientError, handleUnhandledError } from './errorHandlers';
 import { ASSETS_FOLDER } from './constants.js';
 
 dotenv.config();
@@ -38,10 +39,9 @@ app
     })
   )
   .use(cors())
-  .use(express.json());
-
-setupRoutes(app).all('*', (req, res) => {
-  res.status(404).send('Not Found');
-});
+  .use(express.json())
+  .use('/', router)
+  .use(handleClientError)
+  .use(handleUnhandledError);
 
 export default () => app;

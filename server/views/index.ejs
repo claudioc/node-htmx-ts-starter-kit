@@ -15,7 +15,12 @@
         <p hx-ext="current-time" data-target="#currentTime">
           <%- include('partials/serverTime') %>
         </p>
-        <form hx-get="/api/server-time" hx-target="previous p">
+        <form
+          action="/"
+          hx-get="/api/server-time"
+          hx-target="previous p"
+          hx-trigger="submit,30s"
+        >
           <button class="button primary" type="submit">
             Update server time
           </button>

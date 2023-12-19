@@ -1,5 +1,6 @@
 import { nowToISOString, updateElementContent } from './lib/tools.js';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const htmx = (window as any).htmx;
 
 if (htmx !== undefined) {

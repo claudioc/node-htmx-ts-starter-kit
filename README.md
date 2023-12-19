@@ -1,16 +1,18 @@
 # Express + TypeScript + HTMX starter kit
 
-Motivation: **I am sick of React and frontend building issues. I just want to build staff**.
+Motivation: **I am sick of React and frontend building and bundling issues. I just want to build staff**.
 
 The goal of this starter kit is to provide a slightly opinionated but super simple way to get started with a project that has some logic on the backend and some logic on the frontend. A typical use case could be a single page that fetches some information from a third-party API, but you also want to have a small backend where to keep your API keys and maybe a cache to avoid hitting a rate limit on those external API.
 
 The kit contains:
-- A server (expressjs with some middlewares)
+- A server ([Expressjs](https://expressjs.com/) with some middlewares)
 - A client (just TypeScript, no frameworks, which you can extend with your logic)
-- The kit itself does something, as a demo micro application - it reads the current server time and displays it in the browser
+- A demo micro application: reads the current server time and displays it in the browser, auto-refreshing every 30s (or manually)
+- Server side error handling
+- Linting
 
 ## Tech stack
-- Good ol' [Expressjs](https://expressjs.com/)
+- Good ol' [Expressjs](https://expressjs.com/) - but you should consider using [Fastify](https://fastify.dev/) instead
 - [EJS](https://ejs.co/) templates
 - TypeScript
 - [HTMX](https://htmx.org/) for the frontend to speak to the backend
@@ -29,6 +31,7 @@ I am not even using `ts-node` because it's not needed for a small project.
 - dotenv
 - eslint with ts support (extends just the recommended rule set)
 - prettier and a bare-bone config
+- client's and server's own tsconfig which extends a base one
 
 ### Bonus
 - There is an example of how to write a HTMX extension
@@ -40,10 +43,11 @@ Note that it doesn't work on Windows out-of-the-box (makes use of symlinks and b
 
 - npm i
 - npm run dev
+- open http://localhost:3000
 
 You also have `npm lint`, `npm build` and of course `npm start` (for production).
 
-## Use it
+## Use it in your project
 
 Some options:
 
@@ -63,8 +67,8 @@ If you have successfully deployed a project inherited from this kit, in some clo
 ## What is missing
 - Express' body-parser is not installed ([see the doc](https://expressjs.com/en/resources/middleware/body-parser.html)) because I didn't have to POST anything
 - no cookie support, because we hate cookie banners
-- Uses .js importing in the client TS
 - Assets are not tgz compressed because this should be the job of your reverse proxy
+- I use ejs for its simplicity but I don't like not having a type checking in the templates. It should be nice to use JSX, but the risk is to complicate things too much
 
 A testing system is also not installed by default, but if you are like me and love [Vitest](https://vitest.dev/), just follow these instructions (for the client, but it should work for the server as well):
 
