@@ -2,7 +2,6 @@ import express from 'express';
 import path from 'path';
 import morgan from 'morgan';
 import helmet from 'helmet';
-import cors from 'cors';
 import router from './router';
 import dotenv from 'dotenv';
 import { handleClientError, handleUnhandledError } from './errorHandlers';
@@ -38,7 +37,6 @@ app
       },
     })
   )
-  .use(cors())
   .use(express.json())
   .use('/', router)
   .use(handleClientError)

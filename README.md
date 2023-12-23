@@ -22,7 +22,6 @@ I am not even using `ts-node` because it's not needed for a small project.
 
 ### Express middlewares:
 - Helmet for security
-- CORS just in case
 - Morgan for the logs
 
 ### Additional tools provided:
@@ -36,6 +35,11 @@ I am not even using `ts-node` because it's not needed for a small project.
 ### Bonus
 - There is an example of how to write a HTMX extension
 - Configurations are all in the package.json
+
+### Suggested Visual Studio Code extensions
+- EJS language support
+- Prettier
+- Pretty TypeScript Errors
 
 ## Try it
 
@@ -69,6 +73,7 @@ If you have successfully deployed a project inherited from this kit, in some clo
 - no cookie support, because we hate cookie banners
 - Assets are not tgz compressed because this should be the job of your reverse proxy
 - I use ejs for its simplicity but I don't like not having a type checking in the templates. It should be nice to use JSX, but the risk is to complicate things too much
+- Both server and client code reside in the same git repository, and they both share the same package.json and node_modules and that's OK for relatively small project, but you can also decide to move to a monorepo layout using something like [nx](https://nx.dev/) or [TurboRepo](https://turbo.build/) for managing it
 
 A testing system is also not installed by default, but if you are like me and love [Vitest](https://vitest.dev/), just follow these instructions (for the client, but it should work for the server as well):
 
