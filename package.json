@@ -1,6 +1,6 @@
 {
   "name": "node-htmx-ts-starter-kit",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "Opinionated, no nonsense starter kit for a simple Express API application",
   "main": "./dist/app.js",
   "repository": {

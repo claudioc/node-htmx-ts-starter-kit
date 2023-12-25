@@ -32,6 +32,7 @@ app
       },
     })
   )
+  .disable('x-powered-by')
   .use(express.json())
   .use('/', router)
   .use(handleClientError)

@@ -88,6 +88,7 @@ If you have successfully deployed a project inherited from this kit, in some clo
 - Assets are not tgz compressed because this should be the job of your reverse proxy
 - I use ejs for its simplicity but I don't like not having a type checking in the templates. It should be nice to use JSX, but the risk is to complicate things too much
 - Both server and client code reside in the same git repository, and they both share the same package.json and node_modules and that's OK for relatively small project, but you can also decide to move to a monorepo layout using something like [nx](https://nx.dev/) or [TurboRepo](https://turbo.build/) for managing it
+- Only the main client js module (app.js) is provided with a cache-bust parameter, whereas any imported module (as in `tools.js` in this project) is not, which means that they only rely to the cache settings of the static middleware. I will leave it up to you to decide if that's enough or if you want to add an additional build step to handle such cases
 
 A testing system is also not installed by default, but if you are like me and love [Vitest](https://vitest.dev/), just follow these instructions (for the client, but it should work for the server as well):
 
