@@ -1,28 +1,17 @@
-import { Request, Response, Router } from 'express';
+import { Request, Router } from 'express';
 import { cssFile, jsFile } from './assets';
+import { PageModel, PartialModel, AppResponse } from '../types';
+import { PAGE_TITLE } from './constants';
 
-/* The following 3 interfaces are of course up to you to define and keep using */
-
-export interface PartialModel {
-  currentTime: string;
-  error: string | null;
-}
-
-export interface IndexModel extends PartialModel {
-  cssFile: string;
-  jsFile: string;
-}
-
-export interface AppResponse<T> extends Omit<Response, 'render'> {
-  render(view: string, options: T): void;
-}
+interface IndexPageModel extends PageModel, PartialModel {}
 
 const router = Router();
 
 router
   // Renders the home page
-  .get('/', async (_req: Request, res: AppResponse<IndexModel>) => {
+  .get('/', async (_req: Request, res: AppResponse<IndexPageModel>) => {
     res.render('index', {
+      title: PAGE_TITLE,
       cssFile,
       jsFile,
       error: null,
@@ -41,8 +30,12 @@ router.get(
   }
 );
 
-router.all('*', (_req, res) => {
-  res.status(404).send('Not Found');
+router.all('*', (_req, res: AppResponse<PageModel>) => {
+  res.status(404).render('404', {
+    title: `${PAGE_TITLE} - Page not found`,
+    cssFile,
+    jsFile,
+  });
 });
 
 export default router;

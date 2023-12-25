@@ -1,9 +1,14 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, NextFunction } from 'express';
+import { PageModel, PartialModel, AppResponse } from '../types';
+
+interface ErrorPageModel extends PageModel {
+  error: Error;
+}
 
 export const handleClientError = (
   err: Error,
   req: Request,
-  res: Response,
+  res: AppResponse<PartialModel>,
   next: NextFunction
 ) => {
   if (req.header('HX-Request')) {
@@ -22,10 +27,9 @@ export const handleClientError = (
 export const handleUnhandledError = (
   err: Error,
   _req: Request,
-  res: Response,
+  res: AppResponse<ErrorPageModel>,
   next: NextFunction
 ) => {
-  res.status(500);
-  res.render('error', { error: err });
+  res.status(500).render('error', { error: err });
   return next();
 };

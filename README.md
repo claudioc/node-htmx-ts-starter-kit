@@ -1,5 +1,8 @@
 # Express + TypeScript + HTMX starter kit
 
+## Important
+I created a [similar starter kit](https://github.com/claudioc/node-htmx-ts-starter-kit/) using [Fastify](https://fastify.dev/), which nowadays I believe is a better choice over Expressjs, for several reasons. **I will then consider this starter kit "deprecated" and I am not adding any more features or fixes to it**.
+
 Motivation: **I am sick of React and frontend building and bundling issues. I just want to build staff**.
 
 The goal of this starter kit is to provide a slightly opinionated but super simple way to get started with a project that has some logic on the backend and some logic on the frontend. A typical use case could be a single page that fetches some information from a third-party API, but you also want to have a small backend where to keep your API keys and maybe a cache to avoid hitting a rate limit on those external API.
@@ -40,6 +43,17 @@ I am not even using `ts-node` because it's not needed for a small project.
 - EJS language support
 - Prettier
 - Pretty TypeScript Errors
+
+## Project structure
+
+- `server/app.ts` contains just the bare-bone bootstrap code for the server
+- `server/lib` contains any additional server module: `bootstrap.ts` is the module setting up Express and its middlewares, `router.ts` contains the routes definition and the error handling, `assets.ts` is used to generate a cache proof name for the assets. There are also some `constants.ts`
+- `server/views` contains the view templates in EJS format (HTML + embedded JS). EJS doesn't have the concept of "layouts" or "slots", so in our case, we build each "full page" using partials: header + body + footer. If your app grows in complexity you may want to reconsider this design choice and use a layout-based template system
+- `client/app.ts` contains just some code that it's run when the page is loaded in the browser
+- `client/lib/tools.ts` is just used as an example of natively including a js module at runtime
+- `assets` contains js, css, and vendor files. Keep in mind that the js assets are symlinked from the `dist` directory. All the assets are mounted under the `/a` virtual folder
+
+Since this project doesn't use `ts-node`, your app is run directly from the `dist` folder (check the script in package.json to understand how) where the view templates are not copied (because they do not require compilation).
 
 ## Try it
 

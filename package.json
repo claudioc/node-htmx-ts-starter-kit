@@ -29,17 +29,7 @@
   },
   "prettier": {
     "printWidth": 80,
-    "singleQuote": true,
-    "overrides": [
-      {
-        "files": "*.ejs",
-        "options": {
-          "parser": "html",
-          "bracketSameLine": true,
-          "htmlWhitespaceSensitivity": "ignore"
-        }
-      }
-    ]
+    "singleQuote": true
   },
   "eslintConfig": {
     "ignorePatterns": [
@@ -62,8 +52,7 @@
     "plugins": [
       "@typescript-eslint",
       "import"
-    ],
-    "rules": {}
+    ]
   },
   "devDependencies": {
     "@types/express": "^4.17.21",

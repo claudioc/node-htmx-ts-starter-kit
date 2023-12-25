@@ -1,34 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="<%- cssFile %>" />
-  </head>
-  <body class="container">
-    <main class="row">
-      <div class="col">
-        <h1>Yet another starter kit</h1>
-        <p>
-          <strong>Browser time:</strong>
-          <span id="currentTime">…</span>
-        </p>
-        <p hx-ext="current-time" data-target="#currentTime">
-          <%- include('partials/serverTime') %>
-        </p>
-        <form
-          action="/"
-          hx-get="/api/server-time"
-          hx-target="previous p"
-          hx-trigger="submit,30s"
-        >
-          <button class="button primary" type="submit">
-            Update server time
-          </button>
-        </form>
-      </div>
-    </main>
-
-    <script src="/a/vendor/htmx.min.js"></script>
-    <script type="module" src="<%- jsFile %>"></script>
-  </body>
-</html>
+<%- include('partials/header') %>
+<p>
+  <strong>Browser time:</strong>
+  <span id="currentTime">…</span>
+</p>
+<p hx-ext="current-time" data-target="#currentTime">
+  <%- include('partials/serverTime') %>
+</p>
+<form
+  action="/"
+  hx-get="/api/server-time"
+  hx-target="previous p"
+  hx-trigger="submit,every 30s"
+>
+  <button class="button primary" type="submit">
+    Update server time
+  </button>
+</form>
+<script src="/a/vendor/htmx.min.js"></script>
+<script type="module" src="<%- jsFile %>"></script>
+<%- include('partials/footer') %>
