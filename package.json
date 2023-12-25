@@ -1,6 +1,6 @@
 {
   "name": "node-htmx-ts-starter-kit",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Opinionated, no nonsense starter kit for a simple Express API application",
   "main": "./dist/app.js",
   "repository": {
@@ -18,7 +18,7 @@
     "dev:start": "nodemon -w ./dist/server ./dist/server/app.js",
     "dev": "npm run dev:build && conc -r -k 'npm:dev:start' 'npm:dev:watch'",
     "clean": "rm -rf ./dist",
-    "build": "npm run lint && npm run dev:build && ./scripts/copy-views.sh",
+    "build": "npm run lint && npm run dev:build",
     "postinstall": "npm run build",
     "lint": "eslint . --ext .ts",
     "prestart": "NODE_ENV=production npm run build",

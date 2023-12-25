@@ -5,5 +5,6 @@ const app = bootstrap();
 const appPort = process.env.PORT || 3000;
 
 app.listen(appPort, () => {
-  console.log(`Server started on port ${appPort}`);
+  process.env.NODE_ENV !== 'production' &&
+    console.log(`Server started on port ${appPort}`);
 });
